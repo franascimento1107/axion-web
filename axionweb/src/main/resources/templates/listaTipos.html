@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar de Livros</title>
+</head>
+<body>
+<h2>Lista de Livros por Autor</h2>
+<div th:unless="${#lists.isEmpty(tipos)}">
+    <dl th:each="tipo : ${tipos}">
+        <dt class="bookHeadline">
+            <span th:text="${tipo.descricao}">Descricao</span>
+        </dt>
+        <dd class="bookDescription">
+        <span th:if="${tipo.description}" th:text="${tipo.description}">Description</span>
+            <span th:if="${tipo.description eq null}"> Nenhuma descrição foi adicionada para esse livro!</span>
+        </dd>
+    </dl>
+</div>
+<div th:if="${#lists.isEmpty(tipos)}">
+    <p>Nenhum Tipo Cadastrado</p>
+</div>
+<hr/>
+</body>
+</html>
